@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { menuOpts } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class MenuOptsService {
-
+export class AyudaService {
 
   constructor(private http: HttpClient) { }
 
-  getMenuOptions(rol: string) {
-    return this.http.get<menuOpts[]>('/assets/data/menu.json');
+  getAyudas() {
+    return this.http.get('/assets/data/ayuda.json');
   }
 
 }
