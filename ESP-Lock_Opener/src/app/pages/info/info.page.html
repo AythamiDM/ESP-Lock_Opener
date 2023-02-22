@@ -1,17 +1,42 @@
 <app-header titulo="Centro de Ayuda"></app-header>
 
+<ion-content class="ion-padding">
 
-<ion-content class="ion-padding" [fullscreen]="true">
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center" color="warning">Leyenda de iconos</ion-title>
+  </ion-toolbar>
   <ion-list #lista fixed *ngFor="let ayuda of ayudas | async">
 
     <ion-item button (click)="mostrarAyuda(ayuda.name, ayuda.message)" detail="false" lines="none" mode="ios">
       <ion-label>{{ayuda.name}}</ion-label>
-      <ion-icon slot="end" name="{{ayuda.icon}}" size="large" color="secondary"></ion-icon>
+      <ion-icon slot="end" name="{{ayuda.icon}}" size="large" color="success"></ion-icon>
     </ion-item>
 
   </ion-list>
-</ion-content>
 
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center" color="warning">Pagos y Facturación</ion-title>
+  </ion-toolbar>
+  <ion-list>
+    <ion-item button (click)="mostrarAyuda('Formas de pago', 'Función aún no implementada')" detail="false" lines="none"
+      mode="ios">
+      <ion-label>Formas de pago</ion-label>
+      <ion-icon slot="end" name="card-outline" size="large" color="secondary"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center" color="warning">Acuerdo de términos y condiciones</ion-title>
+  </ion-toolbar>
+  <ion-list>
+    <ion-item button (click)="EULA()" detail="false" lines="none" mode="ios">
+      <ion-label>EULA</ion-label>
+      <ion-icon slot="end" name="document-text-outline" size="large" color="secondary"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
 
 <ion-footer class="ion-padding" collapse="fade">
   <ion-button (click)="info()" expand="block" fill="solid" shape="round">

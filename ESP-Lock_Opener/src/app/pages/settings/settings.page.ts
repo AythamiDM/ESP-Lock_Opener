@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ApartamentosComponent } from 'src/app/components/apartamentos/apartamentos.component';
 import { CerradurasComponent } from 'src/app/components/cerraduras/cerraduras.component';
+import { UsuariosComponent } from 'src/app/components/usuarios/usuarios.component';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class SettingsPage implements OnInit {
       component: ApartamentosComponent
     });
     await modal.present();
-    console.log('presenta apartamento')
+    //console.log('presenta apartamento')
   }
 
   async cerraduras(){
@@ -33,20 +34,17 @@ export class SettingsPage implements OnInit {
       component: CerradurasComponent
     });
     await modal.present();
-    console.log('presenta cerraduras')
+    //console.log('presenta cerraduras')
 
   }
-  /*async reservar() {
+  async usuarios(){
 
     const modal = await this.modalCtrl.create({
-      component: ReservarPage,
+      component: UsuariosComponent
     });
-
     await modal.present();
+    //console.log('presenta cerraduras')
 
-    const { data } = await modal.onWillDismiss();
-    console.log(data);
-
-  }*/
+  }
 
 }

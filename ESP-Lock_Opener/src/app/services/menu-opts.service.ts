@@ -13,6 +13,7 @@ export class MenuOptsService {
 
   getMenuOptions(rol: string) {
     return this.http.get<menuOpts[]>('/assets/data/menu.json');
+
   }
 
 }

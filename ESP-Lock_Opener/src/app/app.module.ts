@@ -18,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ImgService } from './services/img.service';
 import { CommonModule } from '@angular/common';
-import { CalendarModule } from 'ion2-calendar';
+//import { CalendarModule } from 'ion2-calendar';
 import { BLE } from '@awesome-cordova-plugins/ble/ngx';
 
 
@@ -39,7 +39,7 @@ import { BLE } from '@awesome-cordova-plugins/ble/ngx';
     AppRoutingModule,
     HttpClientModule,
     ComponentsModule,
-    CalendarModule,
+    
 
     
     

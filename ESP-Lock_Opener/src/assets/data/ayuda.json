@@ -1,22 +1,22 @@
 [
     {
         "icon": "home-outline",
-        "name": "Nueva Reserva",
+        "name": "Home",
         "message": "Accedemos a la reserva de alojamientos"
     },
     {
         "icon": "trash-bin-outline",
-        "name": "Borrar Reserva",
+        "name": "Papelera",
         "message": "Cancelar la reserva que tengamos"
     },
     {
         "icon": "map-outline",
-        "name": "Ver Mapa",
+        "name": "Mapa",
         "message": "Ver en el mapa la ubicación del alojamiento"
     },
     {
         "icon": "key-outline",
-        "name": "Mi Reserva",
+        "name": "Llave",
         "message": "Acceder a nuestra reserva y abrir la cerradura mediante bluetooth"
     }
 ]

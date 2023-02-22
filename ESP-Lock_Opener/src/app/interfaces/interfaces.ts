@@ -3,12 +3,16 @@ export interface menuOpts {
     name: string;
     redirectTo: string;
 }
-
+export interface Ayuda {
+    icon: string;
+    name: string;
+    message: string;
+}
 export interface DaysConfig {
-    date: Date; 
+    date: Date;
     subTitle: string;
     cssClass: String;
-    marked: boolean; 
+    marked: boolean;
     disable: true;
 }
 
@@ -33,7 +37,7 @@ export interface Alquiler {
     UID: string;
 }
 export interface Usuario {
-   EMAIL: string;
-   ROL: string;
-   UID: string;
+    EMAIL: string;
+    ROL: string;
+    UID: string;
 }

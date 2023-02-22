@@ -14,8 +14,8 @@ import { InsertarCerradComponent } from './insertar-cerrad/insertar-cerrad.compo
 import { MapsComponent } from './maps/maps.component';
 import { RegisterComponent } from './register/register.component';
 import { ReservarComponent } from './reservar/reservar.component';
-import { CalendarModule } from 'ion2-calendar';
 import { AnularReservaComponent } from './anular-reserva/anular-reserva.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 
@@ -33,7 +33,8 @@ import { AnularReservaComponent } from './anular-reserva/anular-reserva.componen
     MapsComponent,
     RegisterComponent,
     ReservarComponent,
-    AnularReservaComponent
+    AnularReservaComponent,
+    UsuariosComponent,
     
 
   ],
@@ -49,7 +50,8 @@ import { AnularReservaComponent } from './anular-reserva/anular-reserva.componen
     MapsComponent,
     RegisterComponent,
     ReservarComponent,
-    AnularReservaComponent
+    AnularReservaComponent,
+    UsuariosComponent,
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,7 @@ import { AnularReservaComponent } from './anular-reserva/anular-reserva.componen
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    CalendarModule,
+    
   
   ]
 })

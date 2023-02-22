@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AlojamientosComponent } from 'src/app/components/alojamientos/alojamientos.component';
 import { AnularReservaComponent } from 'src/app/components/anular-reserva/anular-reserva.component';
@@ -17,23 +17,28 @@ import { ImgService } from 'src/app/services/img.service';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
+
   control = true;
+
   fechaLlegada: Date = new Date();
- 
-  fechaActual : Date = new Date();
+
+  fechaActual: Date = new Date();
 
   coleccionApartamentos: any = [{
     id: "",
     data: {} as Apartamento
-   }]; 
-   coleccionUsuarios: any = [{
+  }];
+
+  coleccionUsuarios: any = [{
     id: "",
     data: {} as Usuario
   }];
+
   coleccionAlquileres: any = [{
     id: "",
     data: {} as Alquiler
   }];
+
   apartamento: Apartamento;
 
 
@@ -43,26 +48,28 @@ export class InicioPage implements OnInit {
     private modalCtrl: ModalController,
     public img: ImgService,
     private alert: AlertService) {
-      this.coleccionApartamentos = [];
-      this.preview = [];
-      this.coleccionUsuarios = []
-      this.apartamento = {} as Apartamento
-      this. coleccionAlquileres = [];
-     }
+    this.coleccionApartamentos = [];
+    this.preview = [];
+    this.coleccionUsuarios = []
+    this.apartamento = {} as Apartamento
+    this.coleccionAlquileres = [];
+  }
 
   ngOnInit() {
     this.obtenerListaUsuarios();
     this.apartamentosDisponibles();
-  } 
-  ionViewWillEnter(){
-    if (localStorage.getItem('rol') === 'user'){
-    this.control=false;}else{
-      this.control= true;
+  }
+
+  ionViewWillEnter() {
+    if (localStorage.getItem('rol') === 'user') {
+      this.control = false;
+    } else {
+      this.control = true;
     }
   }
 
-   apartamentosDisponibles(){
-    this.firestoreService.consultarPorCampo('apartamentos','ESTADO','no ocupado').subscribe((consulta: any[]) => {
+  apartamentosDisponibles() {
+    this.firestoreService.consultarPorCampo('apartamentos', 'ESTADO', 'no ocupado').subscribe((consulta: any[]) => {
       this.coleccionApartamentos = [];
       console.log('dentro de resultadoConsulta');
       consulta.forEach((datos: any) => {
@@ -71,15 +78,15 @@ export class InicioPage implements OnInit {
           data: datos.payload.doc.data()
         });
         console.log(this.coleccionApartamentos);
-        
+
       });
     });
-    
+
   }
-/**
- * permite identificar el tipo de rol del usuario
- */
-  obtenerListaUsuarios(){
+  /**
+   * permite identificar el tipo de rol del usuario
+   */
+  obtenerListaUsuarios() {
     this.firestoreService.consultar("usuarios").subscribe((consulta: any[]) => {
       this.coleccionUsuarios = [];
       consulta.forEach((datosTarea: any) => {
@@ -87,22 +94,22 @@ export class InicioPage implements OnInit {
           id: datosTarea.payload.doc.id,
           data: datosTarea.payload.doc.data()
         });
-        
+
       })
       this.coleccionUsuarios.forEach((element: any) => {
-        if (element.data.UID === localStorage.getItem('uid')) {localStorage.setItem('rol',element.data.ROL)}                     
+        if (element.data.UID === localStorage.getItem('uid')) { localStorage.setItem('rol', element.data.ROL) }
       });
-    
+
     });
   }
 
-  
 
-  async reservar( id:string) {
+
+  async reservar(id: string) {
 
     const modal = await this.modalCtrl.create({
       component: ReservarComponent,
-      componentProps: {idApartamento: id, uid: localStorage.getItem('uid')}
+      componentProps: { idApartamento: id, uid: localStorage.getItem('uid') }
     });
 
     await modal.present();
@@ -111,11 +118,11 @@ export class InicioPage implements OnInit {
     console.log(data);
 
   }
-  async anular( id:string) {
+  async anular(id: string) {
 
     const modal = await this.modalCtrl.create({
       component: AnularReservaComponent,
-      componentProps: {idApartamento: id, uid: localStorage.getItem('uid')}
+      componentProps: { idApartamento: id, uid: localStorage.getItem('uid') }
     });
 
     await modal.present();
@@ -126,7 +133,7 @@ export class InicioPage implements OnInit {
   }
 
 
-  apartamentoId(id: string, estado:string,) {
+  apartamentoId(id: string, estado: string,) {
 
     this.firestoreService.consultarPorId('apartamentos', id).subscribe((resultado: any) => {
       if (resultado.exists) {
@@ -143,11 +150,11 @@ export class InicioPage implements OnInit {
 
   }
 
-  async nuevoSitio( ) {
+  async nuevoSitio() {
 
     const modal = await this.modalCtrl.create({
       component: AlojamientosComponent,
-      
+
     });
 
     await modal.present();
@@ -157,10 +164,10 @@ export class InicioPage implements OnInit {
 
   }
 
-  async map(lat:any,lon:any){
+  async map(lat: any, lon: any) {
     const modal = await this.modalCtrl.create({
       component: MapsComponent,
-      componentProps: { lat: lat, lon: lon}
+      componentProps: { lat: lat, lon: lon }
     });
 
     await modal.present();
@@ -170,5 +177,3 @@ export class InicioPage implements OnInit {
   }
 
 }
-
-
