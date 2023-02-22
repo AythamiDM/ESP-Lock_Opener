@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Browser } from '@capacitor/browser';
 import { IonList } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Ayuda } from 'src/app/interfaces/interfaces';
@@ -39,9 +40,8 @@ export class InfoPage implements OnInit {
     this.alert.infoAlert(name, '', message);
   }
 
-  EULA() {
-    // https://www.servicenow.com/es/products/it-asset-management/what-is-eula.html
-    console.log('eula')
+  async EULA() {
+    await Browser.open({ url: 'https://www.servicenow.com/es/products/it-asset-management/what-is-eula.html' });
   }
 
 }
